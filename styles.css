@@ -248,6 +248,10 @@ ul {
 /* ===========================
    Intro Section (purple)
    =========================== */
+.about-top {
+    padding-top: calc(var(--nav-height) + 64px);
+}
+
 .intro-section {
     background: var(--color-purple);
     padding: 64px 0;
