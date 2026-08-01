@@ -230,7 +230,7 @@ ul {
 
 .hero-tagline {
     font-family: var(--font-heading);
-    font-size: 3.5vw;
+    font-size: 7vw;
     font-weight: 700;
     font-style: italic;
     color: #000000;
@@ -246,7 +246,7 @@ ul {
     }
 
     .hero-tagline {
-        font-size: 5vw;
+        font-size: 10vw;
         color: #000000;
     }
 }
