@@ -200,33 +200,39 @@ ul {
    Hero Section
    =========================== */
 .hero {
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #1a1a18;
+    padding-top: var(--nav-height);
 }
 
 .hero-inner {
-    min-height: 100vh;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 112px 80px;
-    padding-top: calc(var(--nav-height) + 112px);
+    justify-content: center;
+    padding: 60px 40px;
+    gap: 40px;
+}
+
+.hero-map {
+    max-width: 860px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 3.5vw, 48px);
+    font-weight: 700;
+    font-style: italic;
+    color: #000000;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .hero-spacer {
     height: 50px;
-}
-
-.hero-text {
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .hero-title {
@@ -246,6 +252,12 @@ ul {
     color: #000000;
     line-height: 1.1;
     text-align: center;
+}
+
+.hero-text {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 /* ===========================
@@ -467,7 +479,7 @@ ul {
     }
 
     .hero-inner {
-        padding: 112px 40px;
+        padding: 40px 24px;
     }
 }
 
@@ -490,6 +502,11 @@ ul {
 
     .hero-inner {
         padding: 112px 24px 80px;
+    }
+
+    .hero-inner {
+        padding: 32px 16px;
+        gap: 24px;
     }
 
     .hero-title,
