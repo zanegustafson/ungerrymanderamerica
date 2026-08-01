@@ -1,4 +1,4 @@
-# Ungerry Mander America
+# Ungerrymander America
 
 A website project dedicated to providing information and resources about gerrymandering in the United States and efforts to promote fair redistricting.
 
