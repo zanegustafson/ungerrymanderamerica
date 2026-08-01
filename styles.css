@@ -236,6 +236,13 @@ ul {
     color: #000000;
     text-align: center;
     line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-line {
+    white-space: nowrap;
 }
 
 /* Narrow / mobile: overlay stays on top of image */
@@ -243,11 +250,6 @@ ul {
     .hero-inner {
         aspect-ratio: 3300 / 1857;
         min-height: 180px;
-    }
-
-    .hero-tagline {
-        font-size: 10vw;
-        color: #000000;
     }
 }
 
