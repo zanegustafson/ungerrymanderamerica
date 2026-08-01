@@ -241,8 +241,8 @@ ul {
 /* Narrow / mobile: overlay stays on top of image */
 @media (max-width: 600px) {
     .hero-inner {
-        aspect-ratio: unset;
-        padding-bottom: 56.27%;
+        aspect-ratio: 3300 / 1857;
+        min-height: 180px;
     }
 
     .hero-tagline {
