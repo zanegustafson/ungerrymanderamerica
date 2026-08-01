@@ -214,6 +214,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 112px 80px;
     padding-top: calc(var(--nav-height) + 112px);
 }
@@ -224,6 +225,8 @@ ul {
 
 .hero-text {
     max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .hero-title {
