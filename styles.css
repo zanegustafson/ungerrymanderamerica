@@ -205,59 +205,35 @@ ul {
 }
 
 .hero-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 40px;
-    gap: 40px;
+    position: relative;
+    width: 100%;
 }
 
 .hero-map {
-    max-width: 860px;
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
-    margin: 0 auto;
+    max-height: calc(100vh - var(--nav-height));
+    object-fit: contain;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
 }
 
 .hero-tagline {
     font-family: var(--font-heading);
-    font-size: clamp(22px, 3.5vw, 48px);
+    font-size: clamp(22px, 3.5vw, 52px);
     font-weight: 700;
     font-style: italic;
     color: #000000;
     text-align: center;
     line-height: 1.2;
-}
-
-.hero-spacer {
-    height: 50px;
-}
-
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: clamp(36px, 6vw, 84px);
-    font-weight: 700;
-    color: #000000;
-    line-height: 1.1;
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.hero-subtitle {
-    font-family: var(--font-heading);
-    font-size: clamp(36px, 6vw, 84px);
-    font-weight: 700;
-    color: #000000;
-    line-height: 1.1;
-    text-align: center;
-}
-
-.hero-text {
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 /* ===========================
@@ -479,7 +455,7 @@ ul {
     }
 
     .hero-inner {
-        padding: 40px 24px;
+        padding: 0;
     }
 }
 
@@ -505,13 +481,7 @@ ul {
     }
 
     .hero-inner {
-        padding: 32px 16px;
-        gap: 24px;
-    }
-
-    .hero-title,
-    .hero-subtitle {
-        font-size: clamp(28px, 8vw, 48px);
+        padding: 0;
     }
 
     .episode-grid {
