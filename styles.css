@@ -242,6 +242,7 @@ ul {
 }
 
 .hero-line {
+    display: block;
     white-space: nowrap;
 }
 
