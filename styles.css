@@ -238,29 +238,16 @@ ul {
     line-height: 1.2;
 }
 
-/* Narrow / mobile: stack image above text instead of overlay */
+/* Narrow / mobile: overlay stays on top of image */
 @media (max-width: 600px) {
     .hero-inner {
         aspect-ratio: unset;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hero-map {
-        position: static;
-        width: 100%;
-        height: auto;
-    }
-
-    .hero-overlay {
-        position: static;
-        padding: 20px 16px;
-        background-color: #1a1a18;
+        padding-bottom: 56.27%;
     }
 
     .hero-tagline {
-        font-size: 6vw;
-        color: #ffffff;
+        font-size: 5vw;
+        color: #000000;
     }
 }
 
