@@ -207,8 +207,7 @@ ul {
 .hero-inner {
     position: relative;
     width: 100%;
-    /* Lock aspect ratio to match logo_brightnotext.png (3300x1857) */
-    padding-bottom: 56.27%;
+    aspect-ratio: 3300 / 1857;
 }
 
 .hero-map {
@@ -231,13 +230,38 @@ ul {
 
 .hero-tagline {
     font-family: var(--font-heading);
-    /* Scale with image width so text stays proportional at all window sizes */
     font-size: 3.5vw;
     font-weight: 700;
     font-style: italic;
     color: #000000;
     text-align: center;
     line-height: 1.2;
+}
+
+/* Narrow / mobile: stack image above text instead of overlay */
+@media (max-width: 600px) {
+    .hero-inner {
+        aspect-ratio: unset;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-map {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-overlay {
+        position: static;
+        padding: 20px 16px;
+        background-color: #1a1a18;
+    }
+
+    .hero-tagline {
+        font-size: 6vw;
+        color: #ffffff;
+    }
 }
 
 /* ===========================
