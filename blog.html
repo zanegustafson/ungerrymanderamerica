@@ -50,61 +50,30 @@
         <section class="section">
             <div class="section-inner">
 
-                <div style="background:var(--color-white); border-radius:var(--radius-lg); padding:32px 36px; box-shadow:var(--shadow-sm); margin-bottom:48px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
-                    <div style="flex:1; min-width:200px;">
-                        <p style="font-family:var(--font-heading); font-size:20px; font-weight:700; margin-bottom:8px;">Read on Substack</p>
-                        <p style="font-family:var(--font-body); font-size:15px; color:var(--color-text-muted); line-height:1.7;">All blog posts live on the Ungerrymander America Substack. Subscribe there to get new posts in your inbox. Free to read, always.</p>
+                <!-- Substack subscribe embed -->
+                <div style="background:var(--color-white); border-radius:var(--radius-lg); padding:32px 36px; box-shadow:var(--shadow-sm); margin-bottom:48px;">
+                    <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-bottom:24px;">
+                        <div style="flex:1; min-width:200px;">
+                            <p style="font-family:var(--font-heading); font-size:20px; font-weight:700; margin-bottom:8px;">Subscribe to the Newsletter</p>
+                            <p style="font-family:var(--font-body); font-size:15px; color:var(--color-text-muted); line-height:1.7;">Get new posts delivered to your inbox. Free to read, always.</p>
+                        </div>
+                        <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="btn btn--purple btn--large" style="flex-shrink:0;">Open Substack &rarr;</a>
                     </div>
-                    <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="btn btn--purple btn--large" style="flex-shrink:0;">Open Substack &rarr;</a>
+                    <iframe src="https://ungerrymanderamerica.substack.com/embed" width="100%" height="150" style="border:none; border-radius:var(--radius); background:var(--color-accent);" frameborder="0" scrolling="no"></iframe>
                 </div>
 
-                <div class="archive-grid">
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">First post coming to Substack</h3>
-                            <p class="blog-card__excerpt">Written companion pieces, episode recaps, and longer essays on the systems explored in each conversation.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">Why every system is political</h3>
-                            <p class="blog-card__excerpt">From food to finance, education to energy. The systems we live inside didn't form by accident. A look at how they got this way, and what it takes to change them.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">What a fair map of America actually looks like</h3>
-                            <p class="blog-card__excerpt">The image at the top of this website isn't hypothetical. It is what America would look like under truly fair redistricting. Here's the story behind it.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">More posts on the way</h3>
-                            <p class="blog-card__excerpt">Subscribe on Substack to be the first to read new essays and episode companion pieces as they're published.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Subscribe &rarr;</a>
-                        </div>
-                    </article>
-
+                <!-- Blog posts loaded from RSS -->
+                <div id="blog-posts" class="archive-grid">
+                    <div style="grid-column: 1 / -1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">
+                        Loading posts from Substack...
+                    </div>
                 </div>
+
             </div>
         </section>
     </div>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">
@@ -140,6 +109,45 @@
         document.getElementById('footer-year').textContent = new Date().getFullYear();
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
         document.getElementById('mobile-close-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+
+        // Fetch Substack RSS via rss2json proxy
+        (async function loadBlogPosts() {
+            const container = document.getElementById('blog-posts');
+            const feedUrl = 'https://ungerrymanderamerica.substack.com/feed';
+            const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">No posts yet. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Visit Substack</a></div>';
+                    return;
+                }
+
+                container.innerHTML = data.items.map(function(item) {
+                    const date = new Date(item.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                    const excerpt = item.description
+                        ? item.description.replace(/<[^>]*>/g, '').substring(0, 180) + '...'
+                        : '';
+                    const imgHtml = item.thumbnail
+                        ? '<img src="' + item.thumbnail + '" alt="" class="blog-card__img">'
+                        : '<div class="blog-card__img-placeholder"></div>';
+
+                    return '<article class="blog-card">'
+                        + '<a href="' + item.link + '" target="_blank" rel="noopener">' + imgHtml + '</a>'
+                        + '<div class="blog-card__body">'
+                        + '<p class="blog-card__date">' + date + '</p>'
+                        + '<h3 class="blog-card__title"><a href="' + item.link + '" target="_blank" rel="noopener">' + item.title + '</a></h3>'
+                        + '<p class="blog-card__excerpt">' + excerpt + '</p>'
+                        + '<a href="' + item.link + '" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>'
+                        + '</div></article>';
+                }).join('');
+
+            } catch (err) {
+                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">Could not load posts. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Read on Substack instead</a></div>';
+            }
+        })();
     </script>
 </body>
 </html>

@@ -130,40 +130,12 @@
             <div class="section-inner">
                 <div class="section-header">
                     <h2 class="section-title">From the Blog</h2>
-                    <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="section-link">Read on Substack &rarr;</a>
+                    <a href="blog.html" class="section-link">See all posts &rarr;</a>
                 </div>
-                <div class="card-grid">
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">First post coming to Substack</h3>
-                            <p class="blog-card__excerpt">Written companion pieces, episode recaps, and longer essays on the systems we explore in each conversation.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">Subscribe to stay updated</h3>
-                            <p class="blog-card__excerpt">Subscribe on Substack to get new posts delivered directly to your inbox. Free to read, always.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Subscribe on Substack &rarr;</a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <div class="blog-card__img-placeholder"></div>
-                        <div class="blog-card__body">
-                            <p class="blog-card__date">Coming soon</p>
-                            <h3 class="blog-card__title">More posts on the way</h3>
-                            <p class="blog-card__excerpt">Each episode of Ungerrymander America explores a different system. The blog goes deeper on the ideas and resources behind each conversation.</p>
-                            <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" class="blog-card__link">Visit Substack &rarr;</a>
-                        </div>
-                    </article>
-
+                <div id="home-blog-posts" class="card-grid">
+                    <div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">
+                        Loading posts from Substack...
+                    </div>
                 </div>
             </div>
         </section>
@@ -319,6 +291,46 @@
         window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
         document.getElementById('mobile-close-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+
+        // Fetch latest 3 Substack posts for homepage
+        (async function loadHomeBlogPosts() {
+            const container = document.getElementById('home-blog-posts');
+            const feedUrl = 'https://ungerrymanderamerica.substack.com/feed';
+            const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">No posts yet. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-secondary);">Visit Substack</a></div>';
+                    return;
+                }
+
+                const posts = data.items.slice(0, 3);
+                container.innerHTML = posts.map(function(item) {
+                    const date = new Date(item.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                    const excerpt = item.description
+                        ? item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                        : '';
+                    const imgHtml = item.thumbnail
+                        ? '<img src="' + item.thumbnail + '" alt="" class="blog-card__img">'
+                        : '<div class="blog-card__img-placeholder"></div>';
+
+                    return '<article class="blog-card">'
+                        + '<a href="' + item.link + '" target="_blank" rel="noopener">' + imgHtml + '</a>'
+                        + '<div class="blog-card__body">'
+                        + '<p class="blog-card__date">' + date + '</p>'
+                        + '<h3 class="blog-card__title"><a href="' + item.link + '" target="_blank" rel="noopener">' + item.title + '</a></h3>'
+                        + '<p class="blog-card__excerpt">' + excerpt + '</p>'
+                        + '<a href="' + item.link + '" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>'
+                        + '</div></article>';
+                }).join('');
+
+            } catch (err) {
+                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">Could not load posts. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-secondary);">Read on Substack</a></div>';
+            }
+        })();
     </script>
 
 </body>
