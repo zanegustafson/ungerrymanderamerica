@@ -313,8 +313,18 @@
                     const excerpt = item.description
                         ? item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
                         : '';
-                    const imgHtml = item.thumbnail
-                        ? '<img src="' + item.thumbnail + '" alt="" class="blog-card__img">'
+                    // Check thumbnail, then enclosure for image
+                    var imgSrc = item.thumbnail || '';
+                    if (!imgSrc && item.enclosure && item.enclosure.link && item.enclosure.type && item.enclosure.type.startsWith('image')) {
+                        imgSrc = item.enclosure.link;
+                    }
+                    // Try to extract image from content if still empty
+                    if (!imgSrc && item.content) {
+                        var match = item.content.match(/<img[^>]+src="([^"]+)"/);
+                        if (match) imgSrc = match[1];
+                    }
+                    const imgHtml = imgSrc
+                        ? '<img src="' + imgSrc + '" alt="" class="blog-card__img">'
                         : '<div class="blog-card__img-placeholder"></div>';
 
                     return '<article class="blog-card">'
