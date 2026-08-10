@@ -361,7 +361,7 @@ ul { list-style: none; }
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #c8c8c4;
+    color: var(--color-white);
     text-transform: uppercase;
 }
 
