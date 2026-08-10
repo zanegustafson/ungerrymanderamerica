@@ -418,6 +418,29 @@ ul { list-style: none; }
     }
 }
 
+@media (max-width: 1125px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-right {
+        order: -1;
+        max-height: none;
+    }
+
+    .hero-map {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .hero-left {
+        justify-content: center;
+        align-items: center;
+        padding: 32px 24px;
+    }
+}
+
 @media (max-width: 480px) {
     .hero-categories {
         max-width: 260px;
