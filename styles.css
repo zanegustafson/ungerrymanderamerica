@@ -250,7 +250,6 @@ ul { list-style: none; }
    =========================== */
 .hero {
     background-color: var(--color-purple);
-    padding-top: var(--nav-height);
 }
 
 .hero-grid {
