@@ -313,7 +313,7 @@ ul { list-style: none; }
 .hero-description {
     font-family: var(--font-body);
     font-size: clamp(13px, 1.4vw, 16px);
-    color: #9ca3a0;
+    color: var(--color-white);
     text-align: center;
     line-height: 1.6;
     max-width: 320px;
