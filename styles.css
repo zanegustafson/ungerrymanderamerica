@@ -379,7 +379,7 @@ ul { list-style: none; }
     line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -387,6 +387,13 @@ ul { list-style: none; }
 
     .hero-right {
         order: -1;
+        max-height: 50vh;
+    }
+
+    .hero-map {
+        object-fit: contain;
+        height: auto;
+        max-height: 50vh;
     }
 
     .hero-left {
@@ -402,7 +409,14 @@ ul { list-style: none; }
     }
 
     .hero-categories {
-        max-width: 280px;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-categories {
+        max-width: 260px;
+        gap: 8px;
     }
 }
 
