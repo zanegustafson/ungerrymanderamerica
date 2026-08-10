@@ -382,27 +382,30 @@ ul { list-style: none; }
 
 @media (max-width: 1530px) {
     .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 2fr;
         min-height: auto;
+        align-items: start;
     }
 
     .hero-right {
-        order: -1;
-        max-height: 50vh;
+        max-height: none;
     }
 
     .hero-map {
         object-fit: contain;
+        width: 100%;
         height: auto;
-        max-height: 50vh;
+        max-height: none;
     }
 
     .hero-left {
         padding: 32px 24px;
+        justify-content: flex-start;
+        padding-top: 48px;
     }
 
     .hero-tagline {
-        font-size: clamp(18px, 5vw, 24px);
+        font-size: clamp(18px, 2.5vw, 24px);
     }
 
     .hero-title {
