@@ -433,8 +433,8 @@ ul { list-style: none; }
     .hero-map {
         width: auto;
         height: auto;
-        max-width: 75%;
-        max-height: 45vh;
+        max-width: 650px;
+        width: 100%;
         object-fit: contain;
         margin: 0 auto;
     }
