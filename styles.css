@@ -426,12 +426,17 @@ ul { list-style: none; }
     .hero-right {
         order: -1;
         max-height: none;
+        display: flex;
+        justify-content: center;
     }
 
     .hero-map {
-        width: 100%;
+        width: auto;
         height: auto;
+        max-width: 75%;
+        max-height: 45vh;
         object-fit: contain;
+        margin: 0 auto;
     }
 
     .hero-left {
