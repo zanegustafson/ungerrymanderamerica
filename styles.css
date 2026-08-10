@@ -406,6 +406,7 @@ ul { list-style: none; }
 
     .hero-tagline {
         font-size: clamp(18px, 2.5vw, 24px);
+        white-space: normal;
     }
 
     .hero-title {
