@@ -384,7 +384,7 @@ ul { list-style: none; }
     .hero-grid {
         grid-template-columns: 1fr 2fr;
         min-height: auto;
-        align-items: start;
+        align-items: center;
     }
 
     .hero-right {
