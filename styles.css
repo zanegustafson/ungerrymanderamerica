@@ -461,6 +461,16 @@ ul { list-style: none; }
     }
 }
 
+.card-grid--three {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+    .card-grid--three {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===========================
    Section base styles
    =========================== */
