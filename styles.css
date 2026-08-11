@@ -1208,6 +1208,12 @@ ul { list-style: none; }
    =========================== */
 .support-page { display: flex; flex-direction: column; gap: 48px; }
 
+@media (max-width: 768px) {
+    .support-page {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 .support-tier {
     background: var(--color-white);
     border-radius: var(--radius-lg);
