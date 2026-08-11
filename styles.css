@@ -453,6 +453,14 @@ ul { list-style: none; }
     }
 }
 
+/* Hide third card at narrower widths */
+@media (max-width: 997px) {
+    .card-grid--limit .episode-card:nth-child(3),
+    .card-grid--limit .blog-card:nth-child(3) {
+        display: none;
+    }
+}
+
 /* ===========================
    Section base styles
    =========================== */
