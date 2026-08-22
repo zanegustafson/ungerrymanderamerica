@@ -1358,7 +1358,8 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
-    .nav-links, .nav-support-btn { display: none; }
+    .nav-links { display: none; }
+    .nav-inner > .nav-support-btn { display: none; }
     .mobile-menu-btn { display: flex; }
 
     .section { padding: 56px 20px; }
