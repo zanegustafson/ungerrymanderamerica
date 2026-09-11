@@ -424,6 +424,14 @@ ul { list-style: none; }
     line-height: 1.6;
 }
 
+.statemap-link {
+    color: var(--color-secondary);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.statemap-link:hover { color: var(--color-secondary-dark); }
+
 .tile-map {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
