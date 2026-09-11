@@ -432,6 +432,21 @@ ul { list-style: none; }
 
 .statemap-link:hover { color: var(--color-secondary-dark); }
 
+.statemap-scroll {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Swipe hint is hidden on desktop, shown on mobile */
+.statemap-hint {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-white);
+    opacity: 0.75;
+    margin-top: 14px;
+}
+
 .tile-map {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -524,24 +539,26 @@ ul { list-style: none; }
 .tile-fl { grid-column: 10; grid-row: 8; }
 .tile-pr { grid-column: 12; grid-row: 8; }
 
-/* Mobile fallback: drop the geographic layout, wrap tiles into a simple grid */
+/* Mobile: keep the geographic map, let it scroll horizontally full-width */
 @media (max-width: 640px) {
+    /* Let the scroll region span the full section width */
+    .statemap-scroll {
+        max-width: none;
+        margin: 0 -24px;
+        padding: 4px 24px 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Right-edge fade to signal "more this way" */
+        -webkit-mask-image: linear-gradient(to right, #000 92%, transparent 100%);
+        mask-image: linear-gradient(to right, #000 92%, transparent 100%);
+    }
     .tile-map {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        max-width: 400px;
+        /* Force a width wider than the phone so it pans; tiles stay tappable */
+        min-width: 560px;
+        max-width: none;
     }
-    .tile {
-        width: 48px;
-        aspect-ratio: 1 / 1;
-        font-size: 12px;
-    }
-    /* Reset geographic placement so flex ordering (alphabetical-ish DOM order) applies */
-    .tile-map .tile {
-        grid-column: auto;
-        grid-row: auto;
+    .statemap-hint {
+        display: block;
     }
 }
 
