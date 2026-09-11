@@ -433,7 +433,7 @@ ul { list-style: none; }
 .statemap-link:hover { color: var(--color-secondary-dark); }
 
 .statemap-scroll {
-    max-width: 760px;
+    max-width: 820px;
     margin: 0 auto;
 }
 
@@ -449,10 +449,10 @@ ul { list-style: none; }
 
 .tile-map {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(13, 1fr);
     grid-template-rows: repeat(8, 1fr);
     gap: 6px;
-    max-width: 760px;
+    max-width: 820px;
     margin: 0 auto;
 }
 
@@ -487,19 +487,20 @@ ul { list-style: none; }
 
 /* Geographic positions: 12 cols x 8 rows US tile grid */
 .tile-ak { grid-column: 1; grid-row: 1; }
-.tile-me { grid-column: 12; grid-row: 1; }
-.tile-vt { grid-column: 11; grid-row: 2; }
-.tile-nh { grid-column: 12; grid-row: 2; }
+.tile-me { grid-column: 13; grid-row: 1; }
+.tile-vt { grid-column: 12; grid-row: 2; }
+.tile-nh { grid-column: 13; grid-row: 2; }
 .tile-wa { grid-column: 2; grid-row: 3; }
 .tile-id { grid-column: 3; grid-row: 3; }
 .tile-mt { grid-column: 4; grid-row: 3; }
 .tile-nd { grid-column: 5; grid-row: 3; }
 .tile-mn { grid-column: 6; grid-row: 3; }
 .tile-wi { grid-column: 7; grid-row: 3; }
-.tile-mi { grid-column: 9; grid-row: 3; }
+.tile-mi { grid-column: 8; grid-row: 3; }
 .tile-ny { grid-column: 10; grid-row: 3; }
-.tile-ma { grid-column: 11; grid-row: 3; }
+.tile-ct { grid-column: 11; grid-row: 3; }
 .tile-ri { grid-column: 12; grid-row: 3; }
+.tile-ma { grid-column: 13; grid-row: 3; }
 .tile-or { grid-column: 2; grid-row: 4; }
 .tile-nv { grid-column: 3; grid-row: 4; }
 .tile-wy { grid-column: 4; grid-row: 4; }
@@ -510,7 +511,7 @@ ul { list-style: none; }
 .tile-oh { grid-column: 9; grid-row: 4; }
 .tile-pa { grid-column: 10; grid-row: 4; }
 .tile-nj { grid-column: 11; grid-row: 4; }
-.tile-ct { grid-column: 12; grid-row: 4; }
+.tile-de { grid-column: 12; grid-row: 4; }
 .tile-ca { grid-column: 2; grid-row: 5; }
 .tile-ut { grid-column: 3; grid-row: 5; }
 .tile-co { grid-column: 4; grid-row: 5; }
@@ -519,25 +520,24 @@ ul { list-style: none; }
 .tile-ky { grid-column: 7; grid-row: 5; }
 .tile-wv { grid-column: 8; grid-row: 5; }
 .tile-va { grid-column: 9; grid-row: 5; }
-.tile-md { grid-column: 10; grid-row: 5; }
-.tile-de { grid-column: 11; grid-row: 5; }
+.tile-dc { grid-column: 10; grid-row: 5; }
+.tile-md { grid-column: 11; grid-row: 5; }
 .tile-az { grid-column: 3; grid-row: 6; }
 .tile-nm { grid-column: 4; grid-row: 6; }
 .tile-ks { grid-column: 5; grid-row: 6; }
 .tile-ar { grid-column: 6; grid-row: 6; }
-.tile-tn { grid-column: 7; grid-row: 6; }
+.tile-ms { grid-column: 7; grid-row: 6; }
+.tile-tn { grid-column: 8; grid-row: 6; }
 .tile-nc { grid-column: 9; grid-row: 6; }
-.tile-sc { grid-column: 10; grid-row: 6; }
-.tile-dc { grid-column: 11; grid-row: 6; }
 .tile-ok { grid-column: 5; grid-row: 7; }
 .tile-la { grid-column: 6; grid-row: 7; }
-.tile-ms { grid-column: 7; grid-row: 7; }
-.tile-al { grid-column: 8; grid-row: 7; }
-.tile-ga { grid-column: 9; grid-row: 7; }
+.tile-al { grid-column: 7; grid-row: 7; }
+.tile-ga { grid-column: 8; grid-row: 7; }
+.tile-sc { grid-column: 9; grid-row: 7; }
 .tile-hi { grid-column: 1; grid-row: 8; }
 .tile-tx { grid-column: 5; grid-row: 8; }
-.tile-fl { grid-column: 10; grid-row: 8; }
-.tile-pr { grid-column: 12; grid-row: 8; }
+.tile-fl { grid-column: 9; grid-row: 8; }
+.tile-pr { grid-column: 13; grid-row: 8; }
 
 /* Mobile: keep the geographic map, let it scroll horizontally full-width */
 @media (max-width: 640px) {
