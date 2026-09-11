@@ -1,4 +1,4 @@
-# Ungerrymander America â€” Pre-Launch To-Do List
+# Ungerrymander America — Pre-Launch To-Do List
 
 ---
 
@@ -12,7 +12,7 @@
 
 ---
 
-## 2. Real Links â€” Support
+## 2. Real Links — Support
 
 - [ ] Set up Patreon page and replace the placeholder `https://www.patreon.com` links with your actual Patreon URL
 - [ ] Confirm Venmo username and replace placeholder `https://venmo.com` links with your Venmo link (e.g. `https://venmo.com/u/YourUsername`)
@@ -20,7 +20,7 @@
 
 ---
 
-## 3. Real Links â€” Podcast Platforms
+## 3. Real Links — Podcast Platforms
 
 - [ ] Add Apple Podcasts link on the Episodes page
 - [ ] Add Spotify link on the Episodes page
@@ -31,7 +31,6 @@
 
 ## 4. Social Media Links
 
-- [ ] Replace placeholder Facebook link (`https://www.facebook.com/`) with your actual Facebook page URL
 - [ ] Replace placeholder Instagram link (`https://www.instagram.com/`) with your actual Instagram URL
 - [ ] Confirm Substack URL (`https://ungerrymanderamerica.substack.com`) is correct and live
 
@@ -42,7 +41,7 @@
 - [ ] Review and update episode blurbs for accuracy (especially Episode 2 which is a placeholder)
 - [ ] Add any missing episodes to `episodes.html`
 - [ ] Write and publish first Substack post so the Blog page isn't all "Coming soon"
-- [ ] Update the "Get Started" nav button â€” decide where it should link or remove it
+- [ ] Update the "Get Started" nav button — decide where it should link or remove it
 - [ ] Review About page copy and confirm all details are accurate
 
 ---
@@ -77,3 +76,4 @@
 ---
 
 *Last updated: July 2026*
+
