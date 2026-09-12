@@ -1393,6 +1393,15 @@ ul { list-style: none; }
     font-size: 13px;
 }
 
+/* Book cover in the about-page grid (natural book proportions, not the 4/5 photo crop) */
+.about-page__cover {
+    width: 100%;
+    border-radius: var(--radius);
+    object-fit: contain;
+    background: var(--color-accent-dark);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.22);
+}
+
 .about-page__content { display: flex; flex-direction: column; gap: 24px; }
 
 .about-page__content h2 {
