@@ -1,0 +1,10 @@
+# Local-only working files (not part of the public website)
+todo-before-launch.md
+DataCenterLegislation_Report.md
+Website examples.docx
+
+# Private working preferences and Kiro config
+.kiro/
+
+# Election analysis workbooks (local only)
+AugustPrimaryAnalysis/
