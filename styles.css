@@ -1345,6 +1345,24 @@ ul { list-style: none; }
     line-height: 1.6;
 }
 
+.page-hero__lead {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-white);
+    max-width: 620px;
+    line-height: 1.6;
+    margin-top: 16px;
+}
+
+.page-hero__lead-link {
+    color: var(--color-secondary);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.page-hero__lead-link:hover { text-decoration: underline; }
+
 /* ===========================
    About page
    =========================== */
