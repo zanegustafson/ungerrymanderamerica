@@ -645,8 +645,14 @@ ul { list-style: none; }
     }
 }
 
-/* Hide third card at narrower widths */
-@media (max-width: 997px) {
+/* Recent Episodes / Blog: show 3 on desktop, 2 on mobile.
+   The 4th card (if any) is always hidden; the 3rd hides below the mobile breakpoint. */
+.card-grid--limit .episode-card:nth-child(n+4),
+.card-grid--limit .blog-card:nth-child(n+4) {
+    display: none;
+}
+
+@media (max-width: 768px) {
     .card-grid--limit .episode-card:nth-child(3),
     .card-grid--limit .blog-card:nth-child(3) {
         display: none;
