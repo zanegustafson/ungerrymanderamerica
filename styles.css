@@ -1312,6 +1312,11 @@ ul { list-style: none; }
         align-items: stretch;
         gap: 24px;
     }
+    .gerry-video {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+    }
 }
 
 /* Episode page */
