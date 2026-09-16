@@ -1262,22 +1262,18 @@ ul { list-style: none; }
     border-radius: 0;
 }
 
-/* How to End Gerrymandering: video + book row, then centered CTA */
-.gerry-media {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+/* How to End Gerrymandering: full-width video, then book row, then centered CTA */
+.gerry-video {
     margin-bottom: 32px;
 }
 
-.gerry-media .video-embed {
-    flex: 1 1 auto;
-    min-width: 0;
-    align-self: center;
+.gerry-book-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
 }
 
 .gerry-book {
-    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1285,7 +1281,7 @@ ul { list-style: none; }
 
 .gerry-book img {
     display: block;
-    max-height: 340px;
+    max-height: 380px;
     width: auto;
     border-radius: var(--radius);
     box-shadow: 0 12px 32px rgba(0,0,0,0.28);
@@ -1302,13 +1298,6 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
-    .gerry-media {
-        flex-direction: column;
-        gap: 24px;
-    }
-    .gerry-media .video-embed {
-        width: 100%;
-    }
     .gerry-book img {
         max-height: 300px;
     }
