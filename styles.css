@@ -1326,7 +1326,7 @@ ul { list-style: none; }
 
 @media (max-width: 600px) {
     .gerry-book-feature {
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 28px;
         text-align: center;
     }
