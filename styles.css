@@ -1323,6 +1323,34 @@ ul { list-style: none; }
     }
 }
 
+/* Listen-on-platform buttons (podcast page) */
+.platform-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.platform-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s;
+}
+
+.platform-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+
+.platform-btn--apple   { background: #9933CC; }
+.platform-btn--spotify { background: #1DB954; }
+.platform-btn--youtube { background: #FF0000; }
+
 /* Episode page */
 .episode-page__video {
     margin-bottom: 40px;
