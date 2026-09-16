@@ -1093,6 +1093,8 @@ ul { list-style: none; }
 .support-btn--patreon { background: #FF424D; color: #fff; }
 .support-btn--venmo   { background: #008CFF; color: #fff; }
 .support-btn--paypal  { background: #003087; color: #fff; }
+.support-btn--book    { background: var(--color-primary); color: #fff; }
+.support-btn--merch   { background: var(--color-purple-dark); color: #fff; }
 
 /* ===========================
    Merch Section
