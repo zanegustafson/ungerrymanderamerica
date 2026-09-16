@@ -1265,14 +1265,14 @@ ul { list-style: none; }
 /* How to End Gerrymandering: intro text left, video right, same row */
 .gerry-intro {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
     margin-bottom: 48px;
     flex-wrap: wrap;
 }
 
 .gerry-intro__text {
-    flex: 1 1 300px;
+    flex: 1 1 0;
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
@@ -1280,7 +1280,8 @@ ul { list-style: none; }
 }
 
 .gerry-video {
-    flex: 1 1 380px;
+    flex: 2 1 0;
+    min-width: 320px;
     padding-bottom: 0;          /* override .video-embed padding trick */
     aspect-ratio: 16 / 9;
     height: auto;
