@@ -1262,6 +1262,58 @@ ul { list-style: none; }
     border-radius: 0;
 }
 
+/* How to End Gerrymandering: video + book row, then centered CTA */
+.gerry-media {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.gerry-media .video-embed {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: center;
+}
+
+.gerry-book {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gerry-book img {
+    display: block;
+    max-height: 340px;
+    width: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+    transition: transform 0.15s;
+}
+
+.gerry-book:hover img {
+    transform: translateY(-3px);
+}
+
+.gerry-cta {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .gerry-media {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .gerry-media .video-embed {
+        width: 100%;
+    }
+    .gerry-book img {
+        max-height: 300px;
+    }
+}
+
 /* Episode page */
 .episode-page__video {
     margin-bottom: 40px;
