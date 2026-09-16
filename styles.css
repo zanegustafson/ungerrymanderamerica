@@ -1517,10 +1517,17 @@ ul { list-style: none; }
 
 .support-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 18px;
     max-width: 820px;
 }
+
+/* Row 1: three cards each spanning 2 of 6 columns */
+.support-tier { grid-column: span 2; }
+
+/* Row 2: two cards, offset so they center under the row above */
+.support-tier--book  { grid-column: 2 / span 2; }
+.support-tier--merch { grid-column: 4 / span 2; }
 
 .support-tier {
     border-radius: var(--radius-lg);
@@ -1560,6 +1567,9 @@ ul { list-style: none; }
 
 @media (max-width: 720px) {
     .support-grid { grid-template-columns: repeat(2, 1fr); }
+    .support-tier,
+    .support-tier--book,
+    .support-tier--merch { grid-column: auto; }
 }
 
 @media (max-width: 460px) {
