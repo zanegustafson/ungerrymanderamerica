@@ -690,6 +690,21 @@ ul { list-style: none; }
     flex-wrap: wrap;
 }
 
+.section-intro {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 720px;
+    margin-top: -24px;
+    margin-bottom: 36px;
+}
+
+.section--dark .section-intro,
+.section--purple .section-intro {
+    color: var(--color-white);
+}
+
 .section-title {
     font-family: var(--font-heading);
     font-size: clamp(24px, 3vw, 36px);
