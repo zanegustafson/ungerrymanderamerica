@@ -1262,13 +1262,37 @@ ul { list-style: none; }
     border-radius: 0;
 }
 
-/* How to End Gerrymandering: contained 16:9 video */
+/* How to End Gerrymandering: intro text left, video right, same row */
+.gerry-intro {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.gerry-intro__text {
+    flex: 1 1 300px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-white);
+}
+
 .gerry-video {
-    max-width: 720px;
-    margin: 0 0 48px;
+    flex: 1 1 380px;
     padding-bottom: 0;          /* override .video-embed padding trick */
     aspect-ratio: 16 / 9;
     height: auto;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .gerry-intro {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
 }
 
 /* Card-less book feature: text + buttons on the left, cover on the right */
