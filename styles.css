@@ -1517,28 +1517,53 @@ ul { list-style: none; }
 
 .support-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    max-width: 900px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 820px;
 }
 
 .support-tier {
-    background: var(--color-white);
-    border-radius: var(--radius);
-    padding: 24px 20px;
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     text-align: center;
 }
 
+/* Platform colors, matching the homepage support buttons */
+.support-tier--substack { background: #FF6719; }
+.support-tier--paypal   { background: #003087; }
+.support-tier--venmo    { background: #008CFF; }
+.support-tier--book     { background: var(--color-primary); }
+.support-tier--merch    { background: var(--color-secondary); }
+
 .support-tier__name {
     font-family: var(--font-heading);
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--color-white);
+}
+
+/* Merch card is yellow, so its text/button use dark ink */
+.support-tier--merch .support-tier__name { color: var(--color-primary); }
+
+/* White button that sits on the colored card */
+.support-tier__btn {
+    background: var(--color-white);
+    color: var(--color-primary);
+}
+
+.support-tier__btn:hover { background: var(--color-accent); }
+
+@media (max-width: 720px) {
+    .support-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 460px) {
+    .support-grid { grid-template-columns: 1fr; }
 }
 
 .support-tier__desc {
