@@ -1323,6 +1323,54 @@ ul { list-style: none; }
     }
 }
 
+/* Follow-along social rows */
+.follow-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.follow-row__label {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.follow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: var(--color-white);
+    transition: background 0.15s, transform 0.15s;
+}
+
+.follow-icon:hover { background: var(--color-secondary); color: var(--color-primary); transform: translateY(-2px); }
+
+/* Dedicated follow strip (full-width band) */
+.follow-strip {
+    background: var(--color-primary);
+    padding: 40px 24px;
+    text-align: center;
+}
+
+.follow-strip__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.follow-strip .follow-row {
+    justify-content: center;
+}
+
 /* Listen-on-platform buttons (podcast page) */
 .platform-btns {
     display: flex;
