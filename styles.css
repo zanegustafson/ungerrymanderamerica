@@ -1262,45 +1262,24 @@ ul { list-style: none; }
     border-radius: 0;
 }
 
-/* How to End Gerrymandering: full-width video, then book row, then centered CTA */
+/* How to End Gerrymandering: contained video, then book feature card, then maps */
 .gerry-video {
-    margin-bottom: 32px;
+    max-width: 720px;
+    margin: 0 auto 40px;
 }
 
-.gerry-book-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 32px;
-}
-
-.gerry-book {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gerry-book img {
-    display: block;
-    max-height: 380px;
-    width: auto;
-    border-radius: var(--radius);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+/* Book cover in the feature card links to the book page */
+.book-feature__cover {
     transition: transform 0.15s;
 }
 
-.gerry-book:hover img {
+.book-feature__cover:hover {
     transform: translateY(-3px);
 }
 
-.gerry-cta {
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-@media (max-width: 768px) {
-    .gerry-book img {
-        max-height: 300px;
-    }
+/* Spacing between the book feature card and the state map below it */
+#start-here .book-feature {
+    margin-bottom: 56px;
 }
 
 /* Episode page */
