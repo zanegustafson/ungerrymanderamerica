@@ -1354,7 +1354,7 @@ ul { list-style: none; }
 
 /* Dedicated follow strip (full-width band) */
 .follow-strip {
-    background: var(--color-primary);
+    background: var(--color-secondary);
     padding: 40px 24px;
     text-align: center;
 }
@@ -1363,12 +1363,23 @@ ul { list-style: none; }
     font-family: var(--font-heading);
     font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 700;
-    color: var(--color-white);
+    color: var(--color-primary);
     margin-bottom: 20px;
 }
 
 .follow-strip .follow-row {
     justify-content: center;
+}
+
+/* Icons on the yellow strip use dark ink */
+.follow-strip .follow-icon {
+    background: rgba(0,0,0,0.08);
+    color: var(--color-primary);
+}
+
+.follow-strip .follow-icon:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
 }
 
 /* Listen-on-platform buttons (podcast page) */
