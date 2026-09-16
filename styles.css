@@ -1265,7 +1265,7 @@ ul { list-style: none; }
 /* How to End Gerrymandering: contained 16:9 video */
 .gerry-video {
     max-width: 720px;
-    margin: 0 auto 48px;
+    margin: 0 0 48px;
     padding-bottom: 0;          /* override .video-embed padding trick */
     aspect-ratio: 16 / 9;
     height: auto;
