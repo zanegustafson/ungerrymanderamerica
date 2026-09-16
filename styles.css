@@ -1400,7 +1400,7 @@ ul { list-style: none; }
    Page Hero (inner pages)
    =========================== */
 .page-hero {
-    background: var(--color-primary);
+    background: var(--color-purple);
     padding: 64px 24px;
     border-bottom: 2px solid var(--color-secondary);
 }
@@ -1422,7 +1422,7 @@ ul { list-style: none; }
 .page-hero__subtitle {
     font-family: var(--font-body);
     font-size: 18px;
-    color: #9ca3a0;
+    color: var(--color-white);
     max-width: 600px;
     line-height: 1.6;
 }
