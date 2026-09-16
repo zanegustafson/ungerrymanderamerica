@@ -1275,8 +1275,8 @@ ul { list-style: none; }
 .gerry-book-feature {
     display: flex;
     align-items: center;
-    gap: 48px;
-    max-width: 900px;
+    gap: 36px;
+    max-width: 620px;
     margin: 0 auto 56px;
     flex-wrap: wrap;
 }
