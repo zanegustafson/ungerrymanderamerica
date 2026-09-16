@@ -1074,6 +1074,8 @@ ul { list-style: none; }
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
+    max-width: 520px;
+    margin: 0 auto;
 }
 
 .support-btn {
@@ -1094,7 +1096,7 @@ ul { list-style: none; }
 .support-btn--venmo   { background: #008CFF; color: #fff; }
 .support-btn--paypal  { background: #003087; color: #fff; }
 .support-btn--book    { background: var(--color-primary); color: #fff; }
-.support-btn--merch   { background: var(--color-purple-dark); color: #fff; }
+.support-btn--merch   { background: var(--color-secondary); color: var(--color-primary); }
 
 /* ===========================
    Merch Section
