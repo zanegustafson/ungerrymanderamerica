@@ -116,8 +116,8 @@ ul { list-style: none; }
     font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
-    color: var(--color-primary);
-    background: var(--color-secondary);
+    color: var(--color-white);
+    background: var(--color-purple);
     padding: 8px 18px;
     border-radius: var(--radius);
     transition: background 0.15s;
@@ -125,7 +125,7 @@ ul { list-style: none; }
     flex-shrink: 0;
 }
 
-.nav-support-btn:hover { background: var(--color-secondary-dark); }
+.nav-support-btn:hover { background: var(--color-purple-dark); }
 
 .mobile-menu-btn {
     display: none;
