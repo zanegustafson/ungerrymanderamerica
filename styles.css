@@ -745,6 +745,14 @@ ul { list-style: none; }
     color: var(--color-white);
 }
 
+.section--purple .section-link {
+    color: var(--color-white);
+}
+
+.section--purple .section-link:hover {
+    color: var(--color-secondary);
+}
+
 /* Purple section variant */
 .section--purple {
     background: var(--color-purple);
