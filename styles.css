@@ -1337,15 +1337,14 @@ ul { list-style: none; }
     gap: 12px;
     padding: 28px 24px;
     border-radius: var(--radius-lg);
-    background: var(--color-primary-light);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
     text-decoration: none;
-    transition: transform 0.15s, border-color 0.15s;
+    transition: transform 0.15s;
 }
 
 .frombook-card:hover {
     transform: translateY(-3px);
-    border-color: var(--color-secondary);
 }
 
 .frombook-card__label {
@@ -1354,14 +1353,14 @@ ul { list-style: none; }
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-secondary);
+    color: var(--color-purple-dark);
 }
 
 .frombook-card__title {
     font-family: var(--font-heading);
     font-size: 20px;
     font-weight: 700;
-    color: var(--color-white);
+    color: var(--color-text);
     line-height: 1.25;
     flex: 1;
 }
@@ -1370,7 +1369,7 @@ ul { list-style: none; }
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: var(--color-purple-dark);
 }
 
 @media (max-width: 768px) {
