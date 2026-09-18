@@ -462,6 +462,7 @@ ul { list-style: none; }
     justify-content: center;
     aspect-ratio: 1 / 1;
     border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.28);
     background: var(--color-secondary);
     color: var(--color-primary);
     font-family: var(--font-heading);
