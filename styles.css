@@ -1370,6 +1370,13 @@ ul { list-style: none; }
     font-weight: 700;
     color: var(--color-text);
     line-height: 1.25;
+}
+
+.frombook-card__excerpt {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
     flex: 1;
 }
 
