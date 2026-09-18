@@ -59,22 +59,90 @@
             </div>
         </div>
 
-        <!-- Book main (About-page layout: large cover + text beside it) -->
+        <!-- Book main: cover + buttons on the left, two text subsections on the right -->
         <section class="section">
             <div class="section-inner">
-                <div class="about-page-grid">
-                    <img src="/images/BookCover_website.png" alt="Polemic for Democracy book cover" class="about-page__cover">
-                    <div class="about-page__content">
-                        <h2>Polemic for Democracy</h2>
-                        <p>By Zane Gustafson. A book about constitutional reform.</p>
-                        <p>The ideas behind Ungerrymander America go deeper than a podcast. <em>Polemic for Democracy</em> is Zane Gustafson's case for rethinking the systems of American democracy from the ground up: the constitutional foundations, the structural problems, and what a genuinely representative America could look like.</p>
-                        <p>The book works through how the system became rigged and lays out a concrete case for reform, the same system-level thinking that drives the show. It is also where the fair-maps project is fully explained, including the methodology behind every redrawn district map.</p>
-                        <p>Reading it is one of the best ways to go in depth on the show's themes and to support Zane's work directly.</p>
-                        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+                <div class="about-two-col">
+                    <div class="about-two-col__side">
+                        <img src="/images/BookCover_website.png" alt="Polemic for Democracy book cover" class="about-two-col__photo">
+                        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
                             <a href="https://shop.ingramspark.com/b/084?params=e6FpRlwhFaYMhOMP0kOZs4KAZhMdFoLGQEnx0oQp9Ob" target="_blank" rel="noopener" class="btn btn--primary">Buy the Book &rarr;</a>
-                            <a href="https://ungerrymanderamerica.substack.com/t/polemic" target="_blank" rel="noopener" class="btn btn--outline" style="border-color:var(--color-text); color:var(--color-text);">Read for Free</a>
+                            <a href="https://ungerrymanderamerica.substack.com/t/polemic" target="_blank" rel="noopener" class="btn btn--purple">Read for Free</a>
                         </div>
                     </div>
+                    <div class="about-two-col__side">
+                        <h2>The Book</h2>
+                        <p><em>Polemic for Democracy</em> is the full case for rethinking American democracy from the ground up: the constitutional foundations, the structural problems, and what a genuinely representative, multiparty America could look like. It works through how the system became rigged and lays out a concrete plan for reform.</p>
+                        <h2>The Process</h2>
+                        <p>Writing the book meant more than making an argument. I redrew the congressional and legislative map for all 50 states, plus DC and Puerto Rico, to show what an ungerrymandered America could actually look like. Every map is built on real data and a consistent, transparent methodology, and they are all available for anyone to explore.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEE THE MAPS: tile grid map (homepage aesthetic) -->
+        <section class="section section--dark" id="see-the-maps">
+            <div class="section-inner">
+                <div class="statemap-block">
+                    <h3 class="statemap-title">See the Maps</h3>
+                    <p class="statemap-intro">Click on your state to see its new, fair map. Read the methodology behind the lines on my blog <a href="https://ungerrymanderamerica.substack.com/p/ch-7a-how-i-ungerrymandered-the-map" target="_blank" rel="noopener" class="statemap-link">here</a>.</p>
+                    <div class="statemap-scroll" tabindex="0" aria-label="Scrollable US state map, swipe left and right to explore">
+                    <div class="tile-map" role="list" aria-label="Redrawn district maps by state">
+                        <a href="https://davesredistricting.org/join/694ab3d1-3ce4-47c1-9cba-6ea86107d4b6" target="_blank" rel="noopener" class="tile tile-ak" role="listitem" title="Alaska" aria-label="Alaska"><span>AK</span></a>
+                        <a href="https://davesredistricting.org/join/388fb497-1ddb-4e7d-86d3-8faf14c3ecbd" target="_blank" rel="noopener" class="tile tile-me" role="listitem" title="Maine" aria-label="Maine"><span>ME</span></a>
+                        <a href="https://davesredistricting.org/join/b283a9b3-e567-4cae-9745-0f4a5fd11cca" target="_blank" rel="noopener" class="tile tile-vt" role="listitem" title="Vermont" aria-label="Vermont"><span>VT</span></a>
+                        <a href="https://davesredistricting.org/join/90a9f42a-65c6-436c-8326-094c81e6d8d5" target="_blank" rel="noopener" class="tile tile-nh" role="listitem" title="New Hampshire" aria-label="New Hampshire"><span>NH</span></a>
+                        <a href="https://davesredistricting.org/join/3be87e42-4669-46aa-8607-8759e783c842" target="_blank" rel="noopener" class="tile tile-wa" role="listitem" title="Washington" aria-label="Washington"><span>WA</span></a>
+                        <a href="https://davesredistricting.org/join/46a583c5-ca32-479b-9a67-e483b5d87bd7" target="_blank" rel="noopener" class="tile tile-id" role="listitem" title="Idaho" aria-label="Idaho"><span>ID</span></a>
+                        <a href="https://davesredistricting.org/join/33678661-9b1a-471a-bc2a-47c8a062f5b0" target="_blank" rel="noopener" class="tile tile-mt" role="listitem" title="Montana" aria-label="Montana"><span>MT</span></a>
+                        <a href="https://davesredistricting.org/join/3bdea62c-84b8-407c-b108-b1a46d2dfee3" target="_blank" rel="noopener" class="tile tile-nd" role="listitem" title="North Dakota" aria-label="North Dakota"><span>ND</span></a>
+                        <a href="https://davesredistricting.org/join/e6cc80c4-a60a-457a-9f24-da74dc2436b5" target="_blank" rel="noopener" class="tile tile-mn" role="listitem" title="Minnesota" aria-label="Minnesota"><span>MN</span></a>
+                        <a href="https://davesredistricting.org/join/8c3855f0-95a1-4e48-8ea8-4e2bfcf4c26c" target="_blank" rel="noopener" class="tile tile-wi" role="listitem" title="Wisconsin" aria-label="Wisconsin"><span>WI</span></a>
+                        <a href="https://davesredistricting.org/join/f6e09992-3501-479c-8af8-c93c20917065" target="_blank" rel="noopener" class="tile tile-mi" role="listitem" title="Michigan" aria-label="Michigan"><span>MI</span></a>
+                        <a href="https://davesredistricting.org/join/68f48941-be15-4e61-8b1a-500aa628b354" target="_blank" rel="noopener" class="tile tile-ny" role="listitem" title="New York" aria-label="New York"><span>NY</span></a>
+                        <a href="https://davesredistricting.org/join/bd96ef5a-d41a-4c55-ac57-852eda31dbb3" target="_blank" rel="noopener" class="tile tile-ma" role="listitem" title="Massachusetts" aria-label="Massachusetts"><span>MA</span></a>
+                        <a href="https://davesredistricting.org/join/d48c86db-2edf-4976-af61-ca7540d12709" target="_blank" rel="noopener" class="tile tile-or" role="listitem" title="Oregon" aria-label="Oregon"><span>OR</span></a>
+                        <a href="https://davesredistricting.org/join/f839aa3a-1f1b-4ade-b94f-9c2abb477807" target="_blank" rel="noopener" class="tile tile-nv" role="listitem" title="Nevada" aria-label="Nevada"><span>NV</span></a>
+                        <a href="https://davesredistricting.org/join/9da727eb-f817-4b3d-8796-55934e05d0ba" target="_blank" rel="noopener" class="tile tile-wy" role="listitem" title="Wyoming" aria-label="Wyoming"><span>WY</span></a>
+                        <a href="https://davesredistricting.org/join/0f78dd04-0992-453d-86d8-61618197c76c" target="_blank" rel="noopener" class="tile tile-sd" role="listitem" title="South Dakota" aria-label="South Dakota"><span>SD</span></a>
+                        <a href="https://davesredistricting.org/join/c0c0ed77-a49e-483d-a392-a49cbb8bd29b" target="_blank" rel="noopener" class="tile tile-ia" role="listitem" title="Iowa" aria-label="Iowa"><span>IA</span></a>
+                        <a href="https://davesredistricting.org/join/2adbf69d-ad31-4d78-ad74-ea88e61c888a" target="_blank" rel="noopener" class="tile tile-il" role="listitem" title="Illinois" aria-label="Illinois"><span>IL</span></a>
+                        <a href="https://davesredistricting.org/join/94557fc3-555b-40e7-a7c3-f603bdd0729d" target="_blank" rel="noopener" class="tile tile-in" role="listitem" title="Indiana" aria-label="Indiana"><span>IN</span></a>
+                        <a href="https://davesredistricting.org/join/8ffcfcbd-b801-4bcd-9a7a-1f57cdc7cc49" target="_blank" rel="noopener" class="tile tile-oh" role="listitem" title="Ohio" aria-label="Ohio"><span>OH</span></a>
+                        <a href="https://davesredistricting.org/join/57f6a71b-3764-4825-9edb-3d3762b332b2" target="_blank" rel="noopener" class="tile tile-pa" role="listitem" title="Pennsylvania" aria-label="Pennsylvania"><span>PA</span></a>
+                        <a href="https://davesredistricting.org/join/ba1b481f-bbed-4ace-9383-2c7d4108a0a1" target="_blank" rel="noopener" class="tile tile-nj" role="listitem" title="New Jersey" aria-label="New Jersey"><span>NJ</span></a>
+                        <a href="https://davesredistricting.org/join/63e382dd-18fd-4ef8-8743-d956057f84b3" target="_blank" rel="noopener" class="tile tile-ct" role="listitem" title="Connecticut" aria-label="Connecticut"><span>CT</span></a>
+                        <a href="https://davesredistricting.org/join/3379ec3d-e097-488e-9d16-5787997a21d5" target="_blank" rel="noopener" class="tile tile-ri" role="listitem" title="Rhode Island" aria-label="Rhode Island"><span>RI</span></a>
+                        <a href="https://davesredistricting.org/join/f99a041e-6c09-41b1-bcf7-eca753b72fd1" target="_blank" rel="noopener" class="tile tile-ca" role="listitem" title="California" aria-label="California"><span>CA</span></a>
+                        <a href="https://davesredistricting.org/join/0dcbd3cd-7011-4c16-b778-93e0b5fd6e5a" target="_blank" rel="noopener" class="tile tile-ut" role="listitem" title="Utah" aria-label="Utah"><span>UT</span></a>
+                        <a href="https://davesredistricting.org/join/b69e42f1-5b95-4964-bd79-98c6929b9dac" target="_blank" rel="noopener" class="tile tile-co" role="listitem" title="Colorado" aria-label="Colorado"><span>CO</span></a>
+                        <a href="https://davesredistricting.org/join/3e313671-e2c0-488a-aacc-9706273ca041" target="_blank" rel="noopener" class="tile tile-ne" role="listitem" title="Nebraska" aria-label="Nebraska"><span>NE</span></a>
+                        <a href="https://davesredistricting.org/join/01528a2b-80cb-4085-bd82-2ec44ea54765" target="_blank" rel="noopener" class="tile tile-mo" role="listitem" title="Missouri" aria-label="Missouri"><span>MO</span></a>
+                        <a href="https://davesredistricting.org/join/da590f7a-442c-4952-aab7-8e28ed7b0ae1" target="_blank" rel="noopener" class="tile tile-ky" role="listitem" title="Kentucky" aria-label="Kentucky"><span>KY</span></a>
+                        <a href="https://davesredistricting.org/join/23cf7638-7b98-4f6b-92e3-eb320664c72f" target="_blank" rel="noopener" class="tile tile-wv" role="listitem" title="West Virginia" aria-label="West Virginia"><span>WV</span></a>
+                        <a href="https://davesredistricting.org/join/f36ead1d-6bf6-4c54-b5d9-f0e8c5f39445" target="_blank" rel="noopener" class="tile tile-va" role="listitem" title="Virginia" aria-label="Virginia"><span>VA</span></a>
+                        <a href="https://davesredistricting.org/join/0f58266f-9ce1-4614-8120-1570bc8cd59f" target="_blank" rel="noopener" class="tile tile-md" role="listitem" title="Maryland" aria-label="Maryland"><span>MD</span></a>
+                        <a href="https://davesredistricting.org/join/599c864d-e6c2-486b-beb8-0eefe85e0831" target="_blank" rel="noopener" class="tile tile-de" role="listitem" title="Delaware" aria-label="Delaware"><span>DE</span></a>
+                        <a href="https://davesredistricting.org/join/f1637eb7-f7e3-4723-b621-58925b2e18f0" target="_blank" rel="noopener" class="tile tile-az" role="listitem" title="Arizona" aria-label="Arizona"><span>AZ</span></a>
+                        <a href="https://davesredistricting.org/join/b5f711a2-eb9e-4e94-8c1c-9fc26b8a6e8c" target="_blank" rel="noopener" class="tile tile-nm" role="listitem" title="New Mexico" aria-label="New Mexico"><span>NM</span></a>
+                        <a href="https://davesredistricting.org/join/836c6bad-ad5f-4eb3-8cd6-d86cce414d32" target="_blank" rel="noopener" class="tile tile-ks" role="listitem" title="Kansas" aria-label="Kansas"><span>KS</span></a>
+                        <a href="https://davesredistricting.org/join/930302ef-b670-46cb-b295-018cfda94041" target="_blank" rel="noopener" class="tile tile-ar" role="listitem" title="Arkansas" aria-label="Arkansas"><span>AR</span></a>
+                        <a href="https://davesredistricting.org/join/7704d754-4da8-42f1-be7d-9e5f0318d34d" target="_blank" rel="noopener" class="tile tile-tn" role="listitem" title="Tennessee" aria-label="Tennessee"><span>TN</span></a>
+                        <a href="https://davesredistricting.org/join/764598bf-2ad4-4609-a1c2-1359352d1490" target="_blank" rel="noopener" class="tile tile-nc" role="listitem" title="North Carolina" aria-label="North Carolina"><span>NC</span></a>
+                        <a href="https://davesredistricting.org/join/0a9fdecf-9acd-4885-a212-119cea64d6a6" target="_blank" rel="noopener" class="tile tile-sc" role="listitem" title="South Carolina" aria-label="South Carolina"><span>SC</span></a>
+                        <a href="https://davesredistricting.org/join/fcf19ca7-c49b-40ac-af9b-b568cd47e0e7" target="_blank" rel="noopener" class="tile tile-dc" role="listitem" title="District of Columbia" aria-label="District of Columbia"><span>DC</span></a>
+                        <a href="https://davesredistricting.org/join/d2fb8dae-ab63-4d35-a7ed-720d31d240b6" target="_blank" rel="noopener" class="tile tile-ok" role="listitem" title="Oklahoma" aria-label="Oklahoma"><span>OK</span></a>
+                        <a href="https://davesredistricting.org/join/5faed0b0-d3f3-4090-a920-3ac3f7ff173a" target="_blank" rel="noopener" class="tile tile-la" role="listitem" title="Louisiana" aria-label="Louisiana"><span>LA</span></a>
+                        <a href="https://davesredistricting.org/join/d2b42358-d972-46ef-bf66-29b854e08b97" target="_blank" rel="noopener" class="tile tile-ms" role="listitem" title="Mississippi" aria-label="Mississippi"><span>MS</span></a>
+                        <a href="https://davesredistricting.org/join/e7898a6f-ef6e-4e3f-9c87-f5bb91d1fd24" target="_blank" rel="noopener" class="tile tile-al" role="listitem" title="Alabama" aria-label="Alabama"><span>AL</span></a>
+                        <a href="https://davesredistricting.org/join/50374118-1af1-4744-897b-c6a02b32930d" target="_blank" rel="noopener" class="tile tile-ga" role="listitem" title="Georgia" aria-label="Georgia"><span>GA</span></a>
+                        <a href="https://davesredistricting.org/join/18078525-f830-45a5-b868-b23ea272d755" target="_blank" rel="noopener" class="tile tile-hi" role="listitem" title="Hawaii" aria-label="Hawaii"><span>HI</span></a>
+                        <a href="https://davesredistricting.org/join/6dfed37c-3aae-432d-bdf1-8a57bbf79beb" target="_blank" rel="noopener" class="tile tile-tx" role="listitem" title="Texas" aria-label="Texas"><span>TX</span></a>
+                        <a href="https://davesredistricting.org/join/cedc43a1-c74e-483b-b654-07eaa3a4bd0c" target="_blank" rel="noopener" class="tile tile-fl" role="listitem" title="Florida" aria-label="Florida"><span>FL</span></a>
+                        <a href="https://davesredistricting.org/join/7051f425-c771-4c4a-8e00-e17206aa3b52" target="_blank" rel="noopener" class="tile tile-pr" role="listitem" title="Puerto Rico" aria-label="Puerto Rico"><span>PR</span></a>
+                    </div>
+                    </div>
+                    <p class="statemap-hint">Swipe to explore the map &rarr;</p>
                 </div>
             </div>
         </section>
