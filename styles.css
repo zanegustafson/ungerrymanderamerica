@@ -547,14 +547,11 @@ ul { list-style: none; }
 }
 
 .statemap-reveal__legend {
-    margin: 20px 0 0;
-    display: flex;
-    justify-content: center;
+    margin: 0;
 }
 
 .statemap-reveal__legend img {
     width: 100%;
-    max-width: 420px;
     height: auto;
     display: block;
 }
