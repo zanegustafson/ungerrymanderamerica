@@ -283,6 +283,18 @@ ul { list-style: none; }
     object-position: center;
 }
 
+.hero-map-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Offset anchor jump so the fixed header doesn't cover the tile map heading */
+#statemap {
+    scroll-margin-top: 90px;
+}
+
 .hero-tagline {
     font-family: var(--font-heading);
     font-size: clamp(18px, 2vw, 26px);
