@@ -79,9 +79,11 @@
             html += '<img src="' + BASE + file + '" alt="' + s.name + (cap ? " - " + cap : "") + ' fair map" loading="lazy">';
             if (cap) { html += '<figcaption>' + cap + '</figcaption>'; }
             html += '</figure>';
+            if (i === 0) {
+                html += '<figure class="statemap-reveal__legend"><img src="' + BASE + 'FourPartyLegend.png" alt="Four-party map color legend" loading="lazy"></figure>';
+            }
         }
         html += '</div>';
-        html += '<figure class="statemap-reveal__legend"><img src="' + BASE + 'FourPartyLegend.png" alt="Four-party map color legend" loading="lazy"></figure>';
         html += '<a class="statemap-reveal__dra" href="' + s.dra + '" target="_blank" rel="noopener">Open the interactive map on Dave\u2019s Redistricting &rarr;</a>';
         return html;
     }
