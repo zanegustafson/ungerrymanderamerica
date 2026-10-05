@@ -546,6 +546,19 @@ ul { list-style: none; }
     text-align: center;
 }
 
+.statemap-reveal__legend {
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.statemap-reveal__legend img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+}
+
 .statemap-reveal__dra {
     display: inline-block;
     margin-top: 20px;

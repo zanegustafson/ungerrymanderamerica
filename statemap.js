@@ -81,6 +81,7 @@
             html += '</figure>';
         }
         html += '</div>';
+        html += '<figure class="statemap-reveal__legend"><img src="' + BASE + 'FourPartyLegend.png" alt="Four-party map color legend" loading="lazy"></figure>';
         html += '<a class="statemap-reveal__dra" href="' + s.dra + '" target="_blank" rel="noopener">Open the interactive map on Dave\u2019s Redistricting &rarr;</a>';
         return html;
     }
