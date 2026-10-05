@@ -478,6 +478,87 @@ ul { list-style: none; }
     transform: translateY(-2px);
 }
 
+.tile--active {
+    background: var(--color-purple);
+    color: var(--color-white);
+}
+
+/* State map reveal panel */
+.statemap-reveal {
+    position: relative;
+    max-width: 820px;
+    margin: 28px auto 0;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 28px 28px 24px;
+    text-align: left;
+}
+
+.statemap-reveal__close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.statemap-reveal__close:hover { color: var(--color-text); }
+
+.statemap-reveal__name {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    padding-right: 32px;
+}
+
+.statemap-reveal__imgs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.statemap-reveal__fig {
+    margin: 0;
+}
+
+.statemap-reveal__fig img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-accent-dark);
+    display: block;
+}
+
+.statemap-reveal__fig figcaption {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.statemap-reveal__dra {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-purple-dark);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.statemap-reveal__dra:hover { color: var(--color-purple); }
+
 /* Dimmed "coming soon" tiles (no map yet) */
 .tile--soon {
     background: var(--color-primary-light);
