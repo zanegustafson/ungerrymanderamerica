@@ -2079,8 +2079,10 @@ ul { list-style: none; }
     font-size: 17px;
     line-height: 1.8;
     color: var(--color-text);
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
+
+.states-intro p:last-child { margin-bottom: 0; }
 
 /* Directory of crawlable state links on the hub */
 .states-directory {
@@ -2163,8 +2165,10 @@ ul { list-style: none; }
     font-size: 17px;
     line-height: 1.8;
     color: var(--color-text);
-    margin-bottom: 18px;
+    margin-bottom: 26px;
 }
+
+.state-article p:last-child { margin-bottom: 0; }
 
 /* Maps block on a state page */
 .state-maps {
