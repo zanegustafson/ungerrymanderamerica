@@ -2058,3 +2058,180 @@ ul { list-style: none; }
     .footer-inner { grid-template-columns: 1fr; gap: 28px; }
     .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* ===========================
+   STATES HUB + STATE PAGES
+   =========================== */
+.states-intro {
+    max-width: 760px;
+    margin: 0 auto 40px;
+}
+
+.states-intro p {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 16px;
+}
+
+/* Directory of crawlable state links on the hub */
+.states-directory {
+    max-width: 820px;
+    margin: 48px auto 0;
+    text-align: center;
+}
+
+.states-directory__title {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+}
+
+.states-directory__note {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.states-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.states-list a {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-white);
+    border: 1px solid var(--color-accent-dark);
+    border-radius: var(--radius);
+    padding: 10px 18px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.states-list a:hover {
+    background: var(--color-purple);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Eyebrow link back to the hub, sits in the purple page hero */
+.state-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+.state-eyebrow a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.state-eyebrow a:hover { border-bottom-color: var(--color-secondary); }
+
+/* Body copy on a state page */
+.state-article {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.state-article p {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 18px;
+}
+
+/* Maps block on a state page */
+.state-maps {
+    max-width: 820px;
+    margin: 48px auto 0;
+    text-align: center;
+}
+
+.state-maps__title {
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 24px;
+}
+
+.state-map-fig {
+    margin: 0 0 24px;
+}
+
+.state-map-fig img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-accent-dark);
+}
+
+.state-map-fig--legend img {
+    border: none;
+}
+
+.state-map-fig figcaption {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.state-maps__dra {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-purple-dark);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.state-maps__dra:hover { color: var(--color-purple); }
+
+/* Cross links at the bottom of a state page */
+.state-crosslinks {
+    max-width: 760px;
+    margin: 48px auto 0;
+    text-align: center;
+    border-top: 1px solid var(--color-accent-dark);
+    padding-top: 32px;
+}
+
+.state-crosslinks p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.state-crosslinks__btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
