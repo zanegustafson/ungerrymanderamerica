@@ -2136,23 +2136,18 @@ ul { list-style: none; }
     transform: translateY(-2px);
 }
 
-/* Eyebrow link back to the hub, sits in the purple page hero */
-.state-eyebrow {
+/* Back link at the top of a state page content section */
+.state-back {
+    display: inline-block;
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-}
-
-.state-eyebrow a {
-    color: var(--color-secondary);
+    color: var(--color-purple-dark);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    margin-bottom: 28px;
 }
 
-.state-eyebrow a:hover { border-bottom-color: var(--color-secondary); }
+.state-back:hover { color: var(--color-purple); text-decoration: underline; }
 
 /* Body copy on a state page */
 .state-article {
