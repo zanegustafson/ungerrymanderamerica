@@ -2136,6 +2136,11 @@ ul { list-style: none; }
     transform: translateY(-2px);
 }
 
+/* Tile map on a light background (States hub) */
+.statemap-block--light .statemap-title { color: var(--color-text); }
+.statemap-block--light .statemap-intro { color: var(--color-text); }
+.statemap-block--light .statemap-hint { color: var(--color-text-muted); opacity: 1; }
+
 /* Back link at the top of a state page content section */
 .state-back {
     display: inline-block;
