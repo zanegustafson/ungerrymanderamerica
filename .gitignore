@@ -8,3 +8,6 @@ Website examples.docx
 
 # Election analysis workbooks (local only)
 AugustPrimaryAnalysis/
+
+# State-pages build tooling (local only, not served)
+build-states/

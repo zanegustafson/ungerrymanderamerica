@@ -139,10 +139,60 @@
                 <!-- STATE DIRECTORY: crawlable links to each state page -->
                 <div class="states-directory">
                     <h2 class="states-directory__title">Read about your state</h2>
-                    <p class="states-directory__note">In-depth write-ups are being published state by state. Live links are shown below.</p>
+                    <p class="states-directory__note">A fair map and write-up for all 50 states, plus DC and Puerto Rico.</p>
                     <ul class="states-list">
+                        <li><a href="/states/alabama/">Alabama</a></li>
+                        <li><a href="/states/alaska/">Alaska</a></li>
+                        <li><a href="/states/arizona/">Arizona</a></li>
+                        <li><a href="/states/arkansas/">Arkansas</a></li>
+                        <li><a href="/states/california/">California</a></li>
+                        <li><a href="/states/colorado/">Colorado</a></li>
+                        <li><a href="/states/connecticut/">Connecticut</a></li>
+                        <li><a href="/states/delaware/">Delaware</a></li>
+                        <li><a href="/states/district-of-columbia/">District of Columbia</a></li>
+                        <li><a href="/states/florida/">Florida</a></li>
+                        <li><a href="/states/georgia/">Georgia</a></li>
+                        <li><a href="/states/hawaii/">Hawaii</a></li>
+                        <li><a href="/states/idaho/">Idaho</a></li>
+                        <li><a href="/states/illinois/">Illinois</a></li>
+                        <li><a href="/states/indiana/">Indiana</a></li>
+                        <li><a href="/states/iowa/">Iowa</a></li>
+                        <li><a href="/states/kansas/">Kansas</a></li>
+                        <li><a href="/states/kentucky/">Kentucky</a></li>
+                        <li><a href="/states/louisiana/">Louisiana</a></li>
+                        <li><a href="/states/maine/">Maine</a></li>
+                        <li><a href="/states/maryland/">Maryland</a></li>
+                        <li><a href="/states/massachusetts/">Massachusetts</a></li>
+                        <li><a href="/states/michigan/">Michigan</a></li>
+                        <li><a href="/states/minnesota/">Minnesota</a></li>
+                        <li><a href="/states/mississippi/">Mississippi</a></li>
+                        <li><a href="/states/missouri/">Missouri</a></li>
+                        <li><a href="/states/montana/">Montana</a></li>
+                        <li><a href="/states/nebraska/">Nebraska</a></li>
+                        <li><a href="/states/nevada/">Nevada</a></li>
+                        <li><a href="/states/new-hampshire/">New Hampshire</a></li>
+                        <li><a href="/states/new-jersey/">New Jersey</a></li>
+                        <li><a href="/states/new-mexico/">New Mexico</a></li>
+                        <li><a href="/states/new-york/">New York</a></li>
+                        <li><a href="/states/north-carolina/">North Carolina</a></li>
+                        <li><a href="/states/north-dakota/">North Dakota</a></li>
+                        <li><a href="/states/ohio/">Ohio</a></li>
+                        <li><a href="/states/oklahoma/">Oklahoma</a></li>
+                        <li><a href="/states/oregon/">Oregon</a></li>
+                        <li><a href="/states/pennsylvania/">Pennsylvania</a></li>
+                        <li><a href="/states/puerto-rico/">Puerto Rico</a></li>
+                        <li><a href="/states/rhode-island/">Rhode Island</a></li>
+                        <li><a href="/states/south-carolina/">South Carolina</a></li>
+                        <li><a href="/states/south-dakota/">South Dakota</a></li>
+                        <li><a href="/states/tennessee/">Tennessee</a></li>
                         <li><a href="/states/texas/">Texas</a></li>
+                        <li><a href="/states/utah/">Utah</a></li>
+                        <li><a href="/states/vermont/">Vermont</a></li>
                         <li><a href="/states/virginia/">Virginia</a></li>
+                        <li><a href="/states/washington/">Washington</a></li>
+                        <li><a href="/states/west-virginia/">West Virginia</a></li>
+                        <li><a href="/states/wisconsin/">Wisconsin</a></li>
+                        <li><a href="/states/wyoming/">Wyoming</a></li>
                     </ul>
                 </div>
             </div>
@@ -196,25 +246,28 @@
     </footer>
 
     <script>
-        // Tiles on the States hub link to each state's own page.
-        // States that have a page yet are listed here; others fall back to
-        // the interactive DRA map in a new tab until their page is built.
+        // Each tile on the States hub links to that state's own page.
         (function () {
             var PAGES = {
-                tx: "/states/texas/",
-                va: "/states/virginia/"
+                al: "alabama", ak: "alaska", az: "arizona", ar: "arkansas", ca: "california",
+                co: "colorado", ct: "connecticut", de: "delaware", dc: "district-of-columbia",
+                fl: "florida", ga: "georgia", hi: "hawaii", id: "idaho", il: "illinois",
+                in: "indiana", ia: "iowa", ks: "kansas", ky: "kentucky", la: "louisiana",
+                me: "maine", md: "maryland", ma: "massachusetts", mi: "michigan", mn: "minnesota",
+                ms: "mississippi", mo: "missouri", mt: "montana", ne: "nebraska", nv: "nevada",
+                nh: "new-hampshire", nj: "new-jersey", nm: "new-mexico", ny: "new-york",
+                nc: "north-carolina", nd: "north-dakota", oh: "ohio", ok: "oklahoma", or: "oregon",
+                pa: "pennsylvania", pr: "puerto-rico", ri: "rhode-island", sc: "south-carolina",
+                sd: "south-dakota", tn: "tennessee", tx: "texas", ut: "utah", vt: "vermont",
+                va: "virginia", wa: "washington", wv: "west-virginia", wi: "wisconsin", wy: "wyoming"
             };
             var tiles = document.querySelectorAll(".tile[data-state]");
             tiles.forEach(function (tile) {
                 var code = tile.getAttribute("data-state");
-                var url = PAGES[code];
+                var slug = PAGES[code];
+                if (!slug) return;
                 tile.addEventListener("click", function () {
-                    if (url) {
-                        window.location.href = url;
-                    } else {
-                        var dra = tile.getAttribute("data-dra");
-                        if (dra) window.open(dra, "_blank", "noopener");
-                    }
+                    window.location.href = "/states/" + slug + "/";
                 });
             });
         })();
