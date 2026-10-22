@@ -122,22 +122,16 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
         document.getElementById('mobile-close-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
 
-        // Fetch Substack RSS via rss2json proxy
+        // Load blog posts. Try the live Substack feed via a proxy first; if that
+        // fails (proxy down, rate-limited, offline), fall back to the committed
+        // /blog/posts.json snapshot so the blog never appears broken.
         (async function loadBlogPosts() {
             const container = document.getElementById('blog-posts');
             const feedUrl = 'https://ungerrymanderamerica.substack.com/feed';
             const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
 
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-
-                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
-                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">No posts yet. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Visit Substack</a></div>';
-                    return;
-                }
-
-                container.innerHTML = data.items.map(function(item) {
+            function render(items) {
+                container.innerHTML = items.map(function(item) {
                     const date = new Date(item.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                     const excerpt = item.description
                         ? item.description.replace(/<[^>]*>/g, '').substring(0, 180) + '...'
@@ -165,9 +159,51 @@
                         + '<a href="' + item.link + '" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>'
                         + '</div></article>';
                 }).join('');
+            }
 
+            // Try the committed snapshot and the live proxy in parallel.
+            // Prefer live data when it succeeds; otherwise use the snapshot.
+            async function getLive() {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                    throw new Error('Live feed returned no items');
+                }
+                return data.items;
+            }
+            async function getSnapshot() {
+                const response = await fetch('/blog/posts.json', { cache: 'no-cache' });
+                if (!response.ok) throw new Error('Snapshot unavailable');
+                const data = await response.json();
+                if (!data.items || data.items.length === 0) throw new Error('Snapshot empty');
+                return data.items;
+            }
+
+            try {
+                // Render the snapshot first so posts appear immediately and reliably.
+                let rendered = false;
+                try {
+                    const snapshot = await getSnapshot();
+                    render(snapshot);
+                    rendered = true;
+                } catch (snapErr) {
+                    // snapshot missing or bad; we'll rely on live below
+                }
+
+                // Then attempt a live refresh; if it works, replace with fresh posts.
+                try {
+                    const live = await getLive();
+                    render(live);
+                    rendered = true;
+                } catch (liveErr) {
+                    // live failed; snapshot (if any) remains on screen
+                }
+
+                if (!rendered) {
+                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">Could not load posts right now. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Read on Substack instead</a></div>';
+                }
             } catch (err) {
-                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">Could not load posts. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Read on Substack instead</a></div>';
+                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:48px 0; color:var(--color-text-muted); font-family:var(--font-body);">Could not load posts right now. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-purple-dark);">Read on Substack instead</a></div>';
             }
         })();
     </script>
