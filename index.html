@@ -484,22 +484,17 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
         document.getElementById('mobile-close-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
 
-        // Fetch latest 3 Substack posts for homepage
+        // Load latest 3 posts for the homepage. Same strategy as the blog page:
+        // render the committed /blog/posts.json snapshot first so the section is
+        // always populated, then try a live Substack refresh via the proxy and
+        // swap in fresh posts if that succeeds.
         (async function loadHomeBlogPosts() {
             const container = document.getElementById('home-blog-posts');
             const feedUrl = 'https://ungerrymanderamerica.substack.com/feed';
             const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
 
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-
-                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
-                    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">No posts yet. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-secondary);">Visit Substack</a></div>';
-                    return;
-                }
-
-                const posts = data.items.slice(0, 3);
+            function render(items) {
+                const posts = items.slice(0, 3);
                 container.innerHTML = posts.map(function(item) {
                     const date = new Date(item.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                     const excerpt = item.description
@@ -528,9 +523,47 @@
                         + '<a href="' + item.link + '" target="_blank" rel="noopener" class="blog-card__link">Read on Substack &rarr;</a>'
                         + '</div></article>';
                 }).join('');
+            }
 
-            } catch (err) {
-                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">Could not load posts. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-secondary);">Read on Substack</a></div>';
+            async function getLive() {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                    throw new Error('Live feed returned no items');
+                }
+                return data.items;
+            }
+            async function getSnapshot() {
+                const bust = 'v=' + Date.now();
+                const urls = ['/blog/posts.json?' + bust, '/blog/posts.json'];
+                for (const u of urls) {
+                    try {
+                        const response = await fetch(u, { cache: 'no-store' });
+                        if (!response.ok) continue;
+                        let text = await response.text();
+                        if (text.charCodeAt(0) === 0xFEFF) { text = text.slice(1); }
+                        const data = JSON.parse(text);
+                        if (data.items && data.items.length > 0) return data.items;
+                    } catch (e) { /* try next url */ }
+                }
+                throw new Error('Snapshot unavailable');
+            }
+
+            let rendered = false;
+            try {
+                const snapshot = await getSnapshot();
+                render(snapshot);
+                rendered = true;
+            } catch (snapErr) { /* fall back to live below */ }
+
+            try {
+                const live = await getLive();
+                render(live);
+                rendered = true;
+            } catch (liveErr) { /* snapshot (if any) remains on screen */ }
+
+            if (!rendered) {
+                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:32px 0; color:rgba(255,255,255,0.7); font-family:var(--font-body);">Could not load posts right now. <a href="https://ungerrymanderamerica.substack.com" target="_blank" rel="noopener" style="color:var(--color-secondary);">Read on Substack</a></div>';
             }
         })();
     </script>
