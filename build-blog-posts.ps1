@@ -61,5 +61,7 @@ $payload = [pscustomobject]@{
 }
 
 $json = $payload | ConvertTo-Json -Depth 6
-Set-Content -Path $outFile -Value $json -Encoding UTF8
-Write-Output ("Wrote {0} posts to {1}" -f $items.Count, $outFile)
+# Write UTF-8 WITHOUT a BOM. A leading BOM breaks browser response.json() parsing.
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($outFile, $json, $utf8NoBom)
+Write-Output ("Wrote {0} posts to {1} (no BOM)" -f $items.Count, $outFile)

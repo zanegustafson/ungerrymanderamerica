@@ -180,7 +180,11 @@
                     try {
                         const response = await fetch(u, { cache: 'no-store' });
                         if (!response.ok) continue;
-                        const data = await response.json();
+                        // Read as text and strip any leading BOM before parsing,
+                        // since a BOM makes JSON.parse throw.
+                        let text = await response.text();
+                        if (text.charCodeAt(0) === 0xFEFF) { text = text.slice(1); }
+                        const data = JSON.parse(text);
                         if (data.items && data.items.length > 0) return data.items;
                     } catch (e) { /* try next url */ }
                 }
