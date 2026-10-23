@@ -172,11 +172,19 @@
                 return data.items;
             }
             async function getSnapshot() {
-                const response = await fetch('/blog/posts.json', { cache: 'no-cache' });
-                if (!response.ok) throw new Error('Snapshot unavailable');
-                const data = await response.json();
-                if (!data.items || data.items.length === 0) throw new Error('Snapshot empty');
-                return data.items;
+                // Cache-bust so visitors always get the latest committed snapshot.
+                const bust = 'v=' + Date.now();
+                // Try root-absolute first, then relative, in case of path edge cases.
+                const urls = ['/blog/posts.json?' + bust, 'posts.json?' + bust];
+                for (const u of urls) {
+                    try {
+                        const response = await fetch(u, { cache: 'no-store' });
+                        if (!response.ok) continue;
+                        const data = await response.json();
+                        if (data.items && data.items.length > 0) return data.items;
+                    } catch (e) { /* try next url */ }
+                }
+                throw new Error('Snapshot unavailable');
             }
 
             try {
