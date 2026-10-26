@@ -572,6 +572,36 @@ ul { list-style: none; }
 .statemap-reveal__legend img {
     width: 100%;
     height: auto;
+}
+
+/* Optional embedded video in the reveal panel (only renders when a state
+   has a `video` set in statemap.js). Responsive 16:9 wrapper. */
+.statemap-reveal__video {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #000;
+}
+
+.statemap-reveal__video iframe,
+.statemap-reveal__video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.statemap-reveal__video-cap {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: 8px;
+    text-align: center;
     display: block;
 }
 

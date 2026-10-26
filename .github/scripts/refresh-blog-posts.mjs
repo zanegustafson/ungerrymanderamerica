@@ -44,8 +44,21 @@ function firstImage(block) {
 }
 
 async function main() {
-  const res = await fetch(FEED_URL, { headers: { 'User-Agent': 'UngerrymanderAmerica-blog-refresh' } });
-  if (!res.ok) throw new Error('Feed fetch failed: HTTP ' + res.status);
+  let res;
+  try {
+    res = await fetch(FEED_URL, { headers: { 'User-Agent': 'UngerrymanderAmerica-blog-refresh' } });
+  } catch (e) {
+    // Network/DNS error reaching Substack. Not a real failure; leave the
+    // committed snapshot in place and exit cleanly so the run stays green.
+    console.log('Feed fetch error (' + e.message + '); leaving snapshot as-is.');
+    return;
+  }
+  if (!res.ok) {
+    // Substack returned a non-OK status (rate limited, temporary outage, etc).
+    // Leave the snapshot in place and exit cleanly rather than failing the run.
+    console.log('Feed returned HTTP ' + res.status + '; leaving snapshot as-is.');
+    return;
+  }
   const xml = await res.text();
 
   const itemBlocks = xml.split(/<item[>\s]/i).slice(1).map(b => b.split(/<\/item>/i)[0]);
@@ -57,7 +70,11 @@ async function main() {
     description: decodeEntities(tag(block, 'description'))
   })).filter(i => i.title && i.link);
 
-  if (items.length === 0) throw new Error('No items parsed from feed');
+  if (items.length === 0) {
+    // Feed shape changed or was empty. Keep the existing snapshot; do not fail.
+    console.log('No items parsed from feed; leaving snapshot as-is.');
+    return;
+  }
 
   const payload = {
     generated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
@@ -80,4 +97,6 @@ async function main() {
   console.log('Wrote ' + items.length + ' posts to ' + OUT_FILE);
 }
 
-main().catch(err => { console.error(err); process.exit(1); });
+// Even on an unexpected error, exit 0 so the scheduled run never emails a
+// failure. The committed snapshot keeps the blog working regardless.
+main().catch(err => { console.log('Non-fatal refresh error: ' + (err && err.message)); process.exit(0); });

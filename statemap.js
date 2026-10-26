@@ -6,8 +6,20 @@
 
     // Per state: dra link, and the list of images (file + caption).
     // Single-image states use one entry with an empty caption.
+    //
+    // OPTIONAL VIDEO (dormant until you add one):
+    // Add a `video` property to any state to show an embedded video in its
+    // reveal panel, below the maps. Leave it off (or empty) to show nothing.
+    // Two accepted forms:
+    //   1) YouTube: just the video ID or any YouTube URL, e.g.
+    //        video: "dQw4w9WgXcQ"
+    //        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    //        video: "https://youtu.be/dQw4w9WgXcQ"
+    //   2) A self-hosted file (mp4/webm), path relative to the site root, e.g.
+    //        video: "/videos/AK-walkthrough.mp4"
+    // Optionally add `videoCaption: "..."` for a line of text under the video.
     var STATES = {
-        ak: { name: "Alaska", dra: "https://davesredistricting.org/join/694ab3d1-3ce4-47c1-9cba-6ea86107d4b6", imgs: [["AK.png", ""]] },
+        ak: { name: "Alaska", dra: "https://davesredistricting.org/join/694ab3d1-3ce4-47c1-9cba-6ea86107d4b6", imgs: [["AK.png", ""]], video: "", videoCaption: "" },
         al: { name: "Alabama", dra: "https://davesredistricting.org/join/e7898a6f-ef6e-4e3f-9c87-f5bb91d1fd24", imgs: [["AL.png", ""]] },
         ar: { name: "Arkansas", dra: "https://davesredistricting.org/join/930302ef-b670-46cb-b295-018cfda94041", imgs: [["AR.png", ""]] },
         az: { name: "Arizona", dra: "https://davesredistricting.org/join/f1637eb7-f7e3-4723-b621-58925b2e18f0", imgs: [["AZ_Full.png", "Full state"], ["AZ_Pheonix.png", "Phoenix"]] },
@@ -61,6 +73,40 @@
         wy: { name: "Wyoming", dra: "https://davesredistricting.org/join/9da727eb-f817-4b3d-8796-55934e05d0ba", imgs: [["WY.png", ""]] }
     };
 
+    // Build the optional video embed for a state. Returns "" when the state
+    // has no `video` set, so nothing renders until a video is added.
+    function videoEmbed(s) {
+        if (!s || !s.video) return "";
+        var src = String(s.video).trim();
+        if (!src) return "";
+        var inner;
+        // Detect a YouTube ID or URL; otherwise treat as a self-hosted file.
+        var ytId = "";
+        var ytMatch = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([A-Za-z0-9_-]{6,})/);
+        if (ytMatch) {
+            ytId = ytMatch[1];
+        } else if (/^[A-Za-z0-9_-]{6,}$/.test(src)) {
+            // Bare ID (no slashes, no dots).
+            ytId = src;
+        }
+        if (ytId) {
+            inner = '<iframe src="https://www.youtube-nocookie.com/embed/' + ytId + '" '
+                + 'title="Video" frameborder="0" loading="lazy" '
+                + 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                + 'allowfullscreen></iframe>';
+        } else {
+            inner = '<video controls preload="none" playsinline>'
+                + '<source src="' + src + '">'
+                + 'Your browser does not support embedded video.'
+                + '</video>';
+        }
+        var html = '<div class="statemap-reveal__video">' + inner + '</div>';
+        if (s.videoCaption) {
+            html += '<p class="statemap-reveal__video-cap">' + s.videoCaption + '</p>';
+        }
+        return html;
+    }
+
     var panel = document.getElementById("statemap-reveal");
     if (!panel) return;
     var tiles = document.querySelectorAll(".tile[data-state]");
@@ -84,6 +130,8 @@
             }
         }
         html += '</div>';
+        // Optional embedded video (renders only when the state has `video` set).
+        html += videoEmbed(s);
         html += '<a class="statemap-reveal__dra" href="' + s.dra + '" target="_blank" rel="noopener">Open the interactive map on Dave\u2019s Redistricting &rarr;</a>';
         return html;
     }

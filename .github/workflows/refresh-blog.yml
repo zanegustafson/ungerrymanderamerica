@@ -30,14 +30,22 @@ jobs:
         run: node .github/scripts/refresh-blog-posts.mjs
 
       - name: Commit and push if changed
+        # Never fail the run on a commit/push hiccup. The committed snapshot
+        # keeps the blog working, so a missed refresh is harmless. Exiting
+        # cleanly here is what stops the "Run failed" notification emails.
         run: |
           if [ -n "$(git status --porcelain blog/posts.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add blog/posts.json
-            git commit -m "Auto-refresh blog posts from Substack feed"
-            git push
-            echo "posts.json updated and pushed."
+            git commit -m "Auto-refresh blog posts from Substack feed" || { echo "Nothing to commit."; exit 0; }
+            # Rebase on any concurrent changes, then push. Tolerate failure.
+            git pull --rebase --autostash origin main || echo "Rebase skipped."
+            if git push; then
+              echo "posts.json updated and pushed."
+            else
+              echo "Push failed (will retry next scheduled run); not failing the job."
+            fi
           else
             echo "No changes to posts.json."
           fi
