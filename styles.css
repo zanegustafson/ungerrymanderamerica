@@ -596,6 +596,15 @@ ul { list-style: none; }
     border: none;
 }
 
+/* Vertical (9:16) variant for YouTube Shorts / portrait clips. Centered and
+   height-capped so it doesn't dominate the panel. */
+.statemap-reveal__video--vertical {
+    aspect-ratio: 9 / 16;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .statemap-reveal__video-cap {
     font-family: var(--font-heading);
     font-size: 14px;

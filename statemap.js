@@ -18,6 +18,9 @@
     //   2) A self-hosted file (mp4/webm), path relative to the site root, e.g.
     //        video: "/videos/AK-walkthrough.mp4"
     // Optionally add `videoCaption: "..."` for a line of text under the video.
+    // Vertical clips (YouTube Shorts) are detected automatically and shown in a
+    // tall 9:16 frame. For a non-Shorts URL that is still vertical, add
+    // `videoVertical: true`.
     var STATES = {
         ak: { name: "Alaska", dra: "https://davesredistricting.org/join/694ab3d1-3ce4-47c1-9cba-6ea86107d4b6", imgs: [["AK.png", ""]], video: "", videoCaption: "" },
         al: { name: "Alabama", dra: "https://davesredistricting.org/join/e7898a6f-ef6e-4e3f-9c87-f5bb91d1fd24", imgs: [["AL.png", ""]] },
@@ -38,7 +41,7 @@
         ks: { name: "Kansas", dra: "https://davesredistricting.org/join/836c6bad-ad5f-4eb3-8cd6-d86cce414d32", imgs: [["KS.png", ""]] },
         ky: { name: "Kentucky", dra: "https://davesredistricting.org/join/da590f7a-442c-4952-aab7-8e28ed7b0ae1", imgs: [["KY.png", ""]] },
         la: { name: "Louisiana", dra: "https://davesredistricting.org/join/5faed0b0-d3f3-4090-a920-3ac3f7ff173a", imgs: [["LA.png", ""]] },
-        ma: { name: "Massachusetts", dra: "https://davesredistricting.org/join/bd96ef5a-d41a-4c55-ac57-852eda31dbb3", imgs: [["MA.png", ""]] },
+        ma: { name: "Massachusetts", dra: "https://davesredistricting.org/join/bd96ef5a-d41a-4c55-ac57-852eda31dbb3", imgs: [["MA.png", ""]], video: "https://www.youtube.com/shorts/Q2VhYJTD5SQ" },
         md: { name: "Maryland", dra: "https://davesredistricting.org/join/0f58266f-9ce1-4614-8120-1570bc8cd59f", imgs: [["MD.png", ""]] },
         me: { name: "Maine", dra: "https://davesredistricting.org/join/388fb497-1ddb-4e7d-86d3-8faf14c3ecbd", imgs: [["ME.png", ""]] },
         mi: { name: "Michigan", dra: "https://davesredistricting.org/join/f6e09992-3501-479c-8af8-c93c20917065", imgs: [["MI_Full.png", "Full state"], ["MI_Detroit.png", "Detroit"]] },
@@ -80,6 +83,8 @@
         var src = String(s.video).trim();
         if (!src) return "";
         var inner;
+        // Vertical (9:16) when it's a YouTube Short or when videoVertical is set.
+        var vertical = /\/shorts\//i.test(src) || s.videoVertical === true;
         // Detect a YouTube ID or URL; otherwise treat as a self-hosted file.
         var ytId = "";
         var ytMatch = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([A-Za-z0-9_-]{6,})/);
@@ -100,7 +105,8 @@
                 + 'Your browser does not support embedded video.'
                 + '</video>';
         }
-        var html = '<div class="statemap-reveal__video">' + inner + '</div>';
+        var cls = 'statemap-reveal__video' + (vertical ? ' statemap-reveal__video--vertical' : '');
+        var html = '<div class="' + cls + '">' + inner + '</div>';
         if (s.videoCaption) {
             html += '<p class="statemap-reveal__video-cap">' + s.videoCaption + '</p>';
         }
