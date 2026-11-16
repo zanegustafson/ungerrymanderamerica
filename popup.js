@@ -17,14 +17,14 @@
 
     /* ---------- Copy ---------- */
     var COPY = {
-        title: "I redrew the map of all 50 states.",
-        body: "Read how in the essays, or in the book.",
+        title: "Get the latest analysis from Zane.",
+        body: "Subscribe free to get each new essay, or read the full argument in the book.",
         bookButton: "Get the book: Polemic for Democracy",
         later: "No thanks",
         done: "I already subscribe",
-        bannerTitle: "I redrew all 50 state maps.",
-        bannerBody: "Read the essays or the book.",
-        bannerButton: "Read how"
+        bannerTitle: "Stay in touch.",
+        bannerBody: "Latest analysis from Zane.",
+        bannerButton: "Subscribe"
     };
 
     /* ---------- Settings ---------- */
