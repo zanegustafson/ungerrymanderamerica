@@ -1,6 +1,7 @@
 /* Ungerrymander America - subscribe popup
    Desktop: a centered popup with the Substack email form and a book button.
-   Mobile (768px and under): a small bottom banner; tapping it opens the popup.
+   Mobile (768px and under): a small card in the middle of the screen; tapping
+   its Subscribe button opens the full popup.
 
    Trigger: once the visitor scrolls past the hero section (.hero or .page-hero),
    after at least 2 seconds on the page. Pages with no hero use 40% scroll depth.
@@ -88,12 +89,12 @@
             + ".ua-pop__link:hover{color:#1c1c1a}"
             + ".ua-pop button:focus-visible,.ua-pop a:focus-visible,.ua-banner button:focus-visible{outline:3px solid #b073da;outline-offset:2px}"
             + "html.ua-pop-lock{overflow:hidden}"
-            + ".ua-banner{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:900;box-sizing:border-box;display:flex;align-items:center;gap:10px;background:#1c1c1a;color:#ffffff;border-radius:12px;padding:12px 8px 12px 16px;box-shadow:0 6px 24px rgba(0,0,0,0.35);transform:translateY(160%);transition:transform .3s ease}"
-            + ".ua-banner.is-open{transform:none}"
-            + ".ua-banner__txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;font-family:var(--font-body,'Inter',sans-serif);font-size:13px;line-height:1.35;color:#ffffff}"
-            + ".ua-banner__txt strong{font-family:var(--font-heading,'Space Grotesk',sans-serif);font-size:14px;color:#ffffff}"
-            + ".ua-banner__go{flex-shrink:0;border:0;border-radius:8px;background:#F5F374;color:#1c1c1a;font-family:var(--font-body,'Inter',sans-serif);font-size:13px;font-weight:700;padding:10px 14px;cursor:pointer;white-space:nowrap}"
-            + ".ua-banner__x{flex-shrink:0;border:0;background:none;color:#ffffff;font-size:26px;line-height:1;padding:4px 8px;cursor:pointer}"
+            + ".ua-banner{position:fixed;top:50%;left:50%;z-index:900;box-sizing:border-box;width:calc(100% - 32px);max-width:340px;display:flex;flex-direction:column;gap:14px;background:#1c1c1a;color:#ffffff;border:1px solid rgba(255,255,255,0.3);border-top:6px solid #b073da;border-radius:14px;padding:24px 20px 20px;box-shadow:0 12px 40px rgba(0,0,0,0.5);opacity:0;transform:translate(-50%,-46%);transition:opacity .25s ease,transform .25s ease}"
+            + ".ua-banner.is-open{opacity:1;transform:translate(-50%,-50%)}"
+            + ".ua-banner__txt{display:flex;flex-direction:column;gap:6px;padding-right:26px;font-family:var(--font-body,'Inter',sans-serif);font-size:15px;line-height:1.4;color:#ffffff}"
+            + ".ua-banner__txt strong{font-family:var(--font-heading,'Space Grotesk',sans-serif);font-size:20px;line-height:1.2;color:#ffffff}"
+            + ".ua-banner__go{display:block;width:100%;border:0;border-radius:8px;background:#F5F374;color:#1c1c1a;font-family:var(--font-body,'Inter',sans-serif);font-size:15px;font-weight:700;padding:12px 14px;cursor:pointer}"
+            + ".ua-banner__x{position:absolute;top:6px;right:8px;width:36px;height:36px;border:0;background:none;color:#ffffff;font-size:26px;line-height:1;cursor:pointer}"
             + "@media (prefers-reduced-motion:reduce){.ua-pop__backdrop,.ua-pop__card,.ua-banner{transition:none}}";
         var style = document.createElement("style");
         style.setAttribute("data-ua-popup", "");
@@ -228,7 +229,7 @@
     function showBanner() {
         if (!banner) buildBanner();
         banner.hidden = false;
-        void banner.offsetWidth; // force a reflow so the slide-up animates
+        void banner.offsetWidth; // force a reflow so the fade-in animates
         banner.className = "ua-banner is-open";
     }
 
